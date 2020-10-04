@@ -1,1 +1,1 @@
-web: wsgi
+web: bin/wsgi
