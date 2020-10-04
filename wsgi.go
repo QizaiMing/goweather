@@ -65,6 +65,7 @@ type weatherResponse struct {
 }
 
 func main() {
+	port := os.Getenv("PORT")
 	templates = template.Must(template.ParseGlob("templates/*.html"))
 	r := mux.NewRouter()
 	r.HandleFunc("/", indexHandler)
@@ -73,7 +74,7 @@ func main() {
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", fs))
 	http.Handle("/", r)
 	http.Handle("/search", r)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":" + port, nil)
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
