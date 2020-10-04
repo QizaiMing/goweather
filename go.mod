@@ -1,5 +1,5 @@
 module bin/wsgi
 
-go 1.15
++heroku goVersion go1.15
 
 require github.com/gorilla/mux v1.8.0
