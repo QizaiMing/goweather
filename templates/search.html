@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Juan Chacon">
+        <title>GoWeather</title>
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+        <link rel="stylesheet" type="text/css" href="/static/index.css">
+        <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="/static/goweather.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> <!--bootstrap css-->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> <!--bootstrap js-->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    </head>
+    <body style="background-color: #275060;}">
+        <div class="container-fluid">
+            <div class="row">
+                <a href="../" class="btn btn-lg btn-light ml-5 mt-2">Back</a>
+            </div>
+            <div class="row">
+                <h2 class="text-white mx-auto">{{.Title}}</h2>
+            </div>
+            <div class="row justify-content-center">            
+                <div class="col-5">
+                    <div class="card mt-5">
+                        <div class="card-body" style="background-color: #65AFFF;}">
+                            <h2 class="card-title text-center text-white">Today</h2>
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-4 d-flex flex-column justify-content-center">
+                                    <img src="https://www.metaweather.com/static/img/weather/png/{{(index .ConsolidatedWeather 0).WeatherStateAbbr}}.png" class="mx-auto" width="70%">
+                                    <h5 class="text-white text-center">{{(index .ConsolidatedWeather 0).WeatherStateName}}</h5> 
+                                </div>                                        
+                                <h3 class="text-white mr-2">{{printf "%.2f" (index .ConsolidatedWeather 0).TheTemp}}°C</h3>
+                                <div class="col-5 d-flex flex-column">
+                                    <h5 class="text-white">Wind: {{printf "%.2f" (index .ConsolidatedWeather 0).WindSpeed}}mph</h5>
+                                    <h5 class="text-white">Humidity: {{(index .ConsolidatedWeather 0).Humidity}}%</h5>
+                                    <h5 class="text-white">Pressure: {{(index .ConsolidatedWeather 0).AirPressure}}mb</h5>
+                                </div>                              
+                            </div>            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">            
+                <div class="col-3">
+                    <div class="card mt-5">
+                        <div class="card-body" style="background-color: #65AFFF;}">
+                            <h2 class="card-title text-center text-white">Tomorrow</h2>
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-5 d-flex flex-column justify-content-center">
+                                    <img src="https://www.metaweather.com/static/img/weather/png/{{(index .ConsolidatedWeather 1).WeatherStateAbbr}}.png" class="mx-auto" width="70%">
+                                    <h5 class="text-white text-center">{{(index .ConsolidatedWeather 1).WeatherStateName}}</h5> 
+                                </div>                                        
+                                <h3 class="text-white mr-5">{{printf "%.2f" (index .ConsolidatedWeather 1).TheTemp}}°C</h3>                             
+                            </div>            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card mt-5">
+                        <div class="card-body" style="background-color: #65AFFF;}">
+                            <h2 class="card-title text-center text-white">{{(index .ConsolidatedWeather 2).ApplicableDate}}</h2>
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-5 d-flex flex-column justify-content-center">
+                                    <img src="https://www.metaweather.com/static/img/weather/png/{{(index .ConsolidatedWeather 2).WeatherStateAbbr}}.png" class="mx-auto" width="70%">
+                                    <h5 class="text-white text-center">{{(index .ConsolidatedWeather 2).WeatherStateName}}</h5> 
+                                </div>                                        
+                                <h3 class="text-white mr-5">{{printf "%.2f" (index .ConsolidatedWeather 2).TheTemp}}°C</h3>
+                            </div>                              
+                        </div>            
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-3">            
+                <div class="col-3">
+                    <div class="card mt-5">
+                        <div class="card-body" style="background-color: #65AFFF;}">
+                            <h2 class="card-title text-center text-white">{{(index .ConsolidatedWeather 3).ApplicableDate}}</h2>
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-5 d-flex flex-column justify-content-center">
+                                    <img src="https://www.metaweather.com/static/img/weather/png/{{(index .ConsolidatedWeather 3).WeatherStateAbbr}}.png" class="mx-auto" width="70%">
+                                    <h5 class="text-white text-center">{{(index .ConsolidatedWeather 3).WeatherStateName}}</h5> 
+                                </div>                                        
+                                <h3 class="text-white mr-5">{{printf "%.2f" (index .ConsolidatedWeather 3).TheTemp}}°C</h3>                             
+                            </div>            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card mt-5">
+                        <div class="card-body" style="background-color: #65AFFF;}">
+                            <h2 class="card-title text-center text-white">{{(index .ConsolidatedWeather 4).ApplicableDate}}</h2>
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-5 d-flex flex-column justify-content-center">
+                                    <img src="https://www.metaweather.com/static/img/weather/png/{{(index .ConsolidatedWeather 4).WeatherStateAbbr}}.png" class="mx-auto" width="70%">
+                                    <h5 class="text-white text-center">{{(index .ConsolidatedWeather 4).WeatherStateName}}</h5> 
+                                </div>                                        
+                                <h3 class="text-white mr-5">{{printf "%.2f" (index .ConsolidatedWeather 4).TheTemp}}°C</h3>
+                            </div>                              
+                        </div>            
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card mt-5">
+                        <div class="card-body" style="background-color: #65AFFF;}">
+                            <h2 class="card-title text-center text-white">{{(index .ConsolidatedWeather 5).ApplicableDate}}</h2>
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-5 d-flex flex-column justify-content-center">
+                                    <img src="https://www.metaweather.com/static/img/weather/png/{{(index .ConsolidatedWeather 5).WeatherStateAbbr}}.png" class="mx-auto" width="70%">
+                                    <h5 class="text-white text-center">{{(index .ConsolidatedWeather 5).WeatherStateName}}</h5> 
+                                </div>                                        
+                                <h3 class="text-white mr-5">{{printf "%.2f" (index .ConsolidatedWeather 5).TheTemp}}°C</h3>
+                            </div>                              
+                        </div>            
+                    </div>
+                </div>
+            </div>
+        </div>                       
+    </body>
+</html>
