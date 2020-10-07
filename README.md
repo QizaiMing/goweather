@@ -8,3 +8,4 @@ A weather app that allows you to check the current weather and forecast of any c
 - Go<br>
 - <a href="https://github.com/gorilla/mux">Mux</a>
 - Heroku
+- <a href="https://www.metaweather.com/api/">MetaWeather API</a>
